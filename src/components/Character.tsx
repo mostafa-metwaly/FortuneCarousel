@@ -1,0 +1,134 @@
+import React from 'react';
+import { GameState } from '../types/game';
+
+interface CharacterProps {
+  selections: GameState['selections'];
+}
+
+const Character: React.FC<CharacterProps> = ({ selections }) => {
+  return (
+    <div className="flex flex-col items-center">
+      <h3 className="text-2xl font-bold text-white mb-6">Your Style Avatar</h3>
+      
+      <div className="relative w-80 h-96 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-3xl border-2 border-white/20 backdrop-blur-sm p-8 flex flex-col items-center justify-center">
+        {/* Character body structure */}
+        <div className="relative flex flex-col items-center">
+          
+          {/* Hat */}
+          <div className="mb-2">
+            {selections.hat ? (
+              <div className="w-16 h-16 animate-fade-in">
+                <img 
+                  src={selections.hat.imageUrl} 
+                  alt={selections.hat.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            ) : (
+              <div className="w-16 h-16 border-2 border-dashed border-purple-300 rounded-full flex items-center justify-center">
+                <span className="text-purple-300 text-xs">Hat</span>
+              </div>
+            )}
+          </div>
+
+          {/* Head */}
+          <div className="w-16 h-16 bg-gradient-to-br from-yellow-200 to-yellow-300 rounded-full mb-2 flex items-center justify-center overflow-hidden">
+            <img 
+              src="/images/character/face.png" 
+              alt="Character face"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Top */}
+          <div className="mb-4">
+            {selections.top ? (
+              <div className="w-20 h-20 animate-fade-in">
+                <img 
+                  src={selections.top.imageUrl} 
+                  alt={selections.top.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            ) : (
+              <div className="w-20 h-16 border-2 border-dashed border-purple-300 rounded-lg flex items-center justify-center">
+                <span className="text-purple-300 text-xs">Top</span>
+              </div>
+            )}
+          </div>
+
+          {/* Pants */}
+          <div className="mb-4">
+            {selections.pants ? (
+              <div className="w-16 h-20 animate-fade-in">
+                <img 
+                  src={selections.pants.imageUrl} 
+                  alt={selections.pants.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            ) : (
+              <div className="w-16 h-20 border-2 border-dashed border-purple-300 rounded-lg flex items-center justify-center">
+                <span className="text-purple-300 text-xs">Pants</span>
+              </div>
+            )}
+          </div>
+
+          {/* Shoes */}
+          <div>
+            {selections.shoes ? (
+              <div className="w-12 h-12 animate-fade-in">
+                <img 
+                  src={selections.shoes.imageUrl} 
+                  alt={selections.shoes.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            ) : (
+              <div className="w-12 h-8 border-2 border-dashed border-purple-300 rounded-lg flex items-center justify-center">
+                <span className="text-purple-300 text-xs">Shoes</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Style indicators */}
+        <div className="absolute top-4 right-4 flex flex-col gap-2">
+          {selections.hat && (
+            <div 
+              className="w-3 h-3 rounded-full animate-pulse"
+              style={{ backgroundColor: selections.hat.color }}
+            />
+          )}
+          {selections.top && (
+            <div 
+              className="w-3 h-3 rounded-full animate-pulse"
+              style={{ backgroundColor: selections.top.color, animationDelay: '0.2s' }}
+            />
+          )}
+          {selections.pants && (
+            <div 
+              className="w-3 h-3 rounded-full animate-pulse"
+              style={{ backgroundColor: selections.pants.color, animationDelay: '0.4s' }}
+            />
+          )}
+          {selections.shoes && (
+            <div 
+              className="w-3 h-3 rounded-full animate-pulse"
+              style={{ backgroundColor: selections.shoes.color, animationDelay: '0.6s' }}
+            />
+          )}
+        </div>
+      </div>
+
+      {/* Selection summary */}
+      <div className="mt-6 text-center">
+        <div className="text-purple-200 text-sm">
+          Selected: {Object.values(selections).filter(Boolean).length} of 4 items
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Character;
