@@ -2,6 +2,7 @@ export interface ClothingItem {
   id: string;
   name: string;
   imageUrl: string;
+  emoji: string;
   professionWeights: {
     [key: string]: number;
   };

@@ -16,8 +16,14 @@ const ResultPage: React.FC<ResultPageProps> = ({ profession, selections, onResta
   }, []);
 
   return (
-    <div className="min-h-screen p-4 flex items-center justify-center">
-      <div className="max-w-4xl mx-auto text-center">
+    <div className="min-h-screen p-4 flex items-center justify-center relative">
+      {/* Background image with overlay */}
+      <div className="absolute inset-0 bg-[url('/images/landing-bg.jpg')] bg-cover bg-center bg-no-repeat">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+      </div>
+
+      {/* Content */}
+      <div className="max-w-4xl mx-auto text-center relative z-10">
         
         {/* Result animation */}
         <div className={`mb-8 transform transition-all duration-1000 ${showAnimation ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`}>

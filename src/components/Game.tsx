@@ -66,7 +66,7 @@ const Game: React.FC = () => {
         <div className="mb-8">
           <div className="h-2 bg-white/20 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300"
+              className="h-full bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-200"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             ></div>
           </div>
@@ -81,7 +81,7 @@ const Game: React.FC = () => {
             <div className="w-48 h-48 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
               <Character selections={selections} />
             </div>
-            <div className="absolute -top-4 -right-4 animate-spin" style={{ animationDuration: '3s' }}>
+            <div className="absolute -top-4 -right-4 animate-spin" style={{ animationDuration: '4s' }}>
               <Sparkles className="w-8 h-8 text-pink-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]" />
             </div>
           </div>
@@ -97,7 +97,7 @@ const Game: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => handleItemSelect(item)}
-                className={`p-4 rounded-lg transition-all duration-200 transform hover:scale-105 ${
+                className={`p-4 rounded-lg transition-all duration-200 transform hover:scale-102 ${
                   selections[currentCategory]?.id === item.id
                     ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-[0_0_15px_rgba(236,72,153,0.5)]'
                     : 'bg-white/10 backdrop-blur-sm text-white hover:bg-white/20'

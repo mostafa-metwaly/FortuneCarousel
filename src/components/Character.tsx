@@ -17,7 +17,7 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
           {/* Hat */}
           <div className="mb-2">
             {selections.hat ? (
-              <div className="w-16 h-16 animate-fade-in">
+              <div className="w-16 h-16 transition-opacity duration-200">
                 <img 
                   src={selections.hat.imageUrl} 
                   alt={selections.hat.name}
@@ -43,7 +43,7 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
           {/* Top */}
           <div className="mb-4">
             {selections.top ? (
-              <div className="w-20 h-20 animate-fade-in">
+              <div className="w-20 h-20 transition-opacity duration-200">
                 <img 
                   src={selections.top.imageUrl} 
                   alt={selections.top.name}
@@ -60,7 +60,7 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
           {/* Pants */}
           <div className="mb-4">
             {selections.pants ? (
-              <div className="w-16 h-20 animate-fade-in">
+              <div className="w-16 h-20 transition-opacity duration-200">
                 <img 
                   src={selections.pants.imageUrl} 
                   alt={selections.pants.name}
@@ -77,7 +77,7 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
           {/* Shoes */}
           <div>
             {selections.shoes ? (
-              <div className="w-12 h-12 animate-fade-in">
+              <div className="w-12 h-12 transition-opacity duration-200">
                 <img 
                   src={selections.shoes.imageUrl} 
                   alt={selections.shoes.name}
@@ -96,26 +96,26 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
         <div className="absolute top-4 right-4 flex flex-col gap-2">
           {selections.hat && (
             <div 
-              className="w-3 h-3 rounded-full animate-pulse"
+              className="w-3 h-3 rounded-full"
               style={{ backgroundColor: selections.hat.color }}
             />
           )}
           {selections.top && (
             <div 
-              className="w-3 h-3 rounded-full animate-pulse"
-              style={{ backgroundColor: selections.top.color, animationDelay: '0.2s' }}
+              className="w-3 h-3 rounded-full"
+              style={{ backgroundColor: selections.top.color }}
             />
           )}
           {selections.pants && (
             <div 
-              className="w-3 h-3 rounded-full animate-pulse"
-              style={{ backgroundColor: selections.pants.color, animationDelay: '0.4s' }}
+              className="w-3 h-3 rounded-full"
+              style={{ backgroundColor: selections.pants.color }}
             />
           )}
           {selections.shoes && (
             <div 
-              className="w-3 h-3 rounded-full animate-pulse"
-              style={{ backgroundColor: selections.shoes.color, animationDelay: '0.6s' }}
+              className="w-3 h-3 rounded-full"
+              style={{ backgroundColor: selections.shoes.color }}
             />
           )}
         </div>
