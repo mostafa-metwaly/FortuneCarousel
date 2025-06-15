@@ -37,10 +37,10 @@ const GameStep: React.FC<GameStepProps> = ({
   const progress = ((currentStepIndex + 1) / steps.length) * 100;
 
   return (
-    <div className="min-h-screen p-4 flex flex-col relative">
+    <div className="min-h-screen p-4 flex flex-col relative bg-gradient-to-b from-[rgb(85,0,0)]/40 via-[rgb(27, 0, 0)]/80 to-[rgb(85,0,0)]/40">
       {/* Background image with overlay */}
       <div className="absolute inset-0 bg-[url('/images/typography.png')] bg-cover bg-center bg-no-repeat">
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[5px]"></div>
+        <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px]"></div>
       </div>
 
       {/* Content */}
@@ -86,10 +86,10 @@ const GameStep: React.FC<GameStepProps> = ({
                     <img 
                       src={item.imageUrl} 
                       alt={item.name}
-                      className="w-16 h-16 object-contain mx-auto"
+                      className="w-24 h-24 object-contain mx-auto"
                     />
                   </div>
-                  <h3 className="text-white font-semibold">{item.name}</h3>
+                  {/* <h3 className="text-white font-semibold">{item.name}</h3> */}
                   <div 
                     className="w-3 h-3 rounded-full mx-auto mt-3"
                     style={{ backgroundColor: item.color }}

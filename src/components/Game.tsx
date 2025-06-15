@@ -80,7 +80,7 @@ const Game: React.FC = () => {
         <div className="mb-8">
           <div className="h-2 bg-white/20 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-red-500 to-purple-600 transition-all duration-200"
+              className="h-full bg-gradient-to-r from-red-500 to-red-600 transition-all duration-200"
               style={{ width: `${((steps.indexOf(currentStep) + 1) / steps.length) * 100}%` }}
             ></div>
           </div>
@@ -113,7 +113,7 @@ const Game: React.FC = () => {
                 onClick={() => handleItemSelect(item)}
                 className={`p-4 rounded-lg transition-all duration-200 transform hover:scale-102 ${
                   selections[currentCategory]?.id === item.id
-                    ? 'bg-gradient-to-r from-red-500 to-purple-600 text-white shadow-[0_0_15px_rgba(236,72,153,0.5)]'
+                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-[0_0_15px_rgba(236,72,153,0.5)]'
                     : 'bg-white/10 backdrop-blur-sm text-white hover:bg-white/20'
                 }`}
               >
@@ -138,7 +138,7 @@ const Game: React.FC = () => {
             className={`px-6 py-2 rounded-full text-white font-medium transition-all duration-200 ${
               currentStep === steps[0]
                 ? 'bg-white/20 cursor-not-allowed'
-                : 'bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
+                : 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
             }`}
           >
             Previous
@@ -149,7 +149,7 @@ const Game: React.FC = () => {
             className={`px-6 py-2 rounded-full text-white font-medium transition-all duration-200 ${
               !selections[currentCategory]
                 ? 'bg-white/20 cursor-not-allowed'
-                : 'bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
+                : 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
             }`}
           >
             {currentStep === steps[steps.length - 1] ? 'See Results' : 'Next'}

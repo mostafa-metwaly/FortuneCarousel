@@ -80,8 +80,8 @@ export const professions: Profession[] = [
     id: 'photographer',
     name: 'Photographer',
     emoji: '📸',
-    imageUrl: '/images/professions/athelete.png',
-    characterUrl: '/images/character/photographer.png',
+    imageUrl: '/images/professions/Photographer.png',
+    characterUrl: '/images/character/athelete.png',
     description: 'Your practical yet stylish choices show you see beauty everywhere. You balance functionality with aesthetics, always ready to capture the perfect moment.',
     illustration: '📷',
     facts: [
