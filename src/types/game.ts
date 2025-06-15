@@ -12,7 +12,8 @@ export interface ClothingItem {
 export interface Profession {
   id: string;
   name: string;
-  emoji: string;
+  imageUrl?: string;
+  emoji?: string;
   description: string;
   facts: string[];
   illustration: string;

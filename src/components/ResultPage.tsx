@@ -28,8 +28,20 @@ const ResultPage: React.FC<ResultPageProps> = ({ profession, selections, onResta
         {/* Result animation */}
         <div className={`mb-8 transform transition-all duration-1000 ${showAnimation ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`}>
           <div className="relative">
-            <div className="text-8xl mb-4 animate-bounce">
-              {profession.emoji}
+            <div className="mb-4">
+              {profession.imageUrl ? (
+                <img 
+                  src={profession.imageUrl} 
+                  alt={profession.name}
+                  className="w-32 h-32 object-contain mx-auto animate-bounce"
+                />
+              ) : profession.emoji ? (
+                <div className="text-8xl animate-bounce">
+                  {profession.emoji}
+                </div>
+              ) : (
+                <div className="w-32 h-32 bg-white/10 rounded-full animate-bounce" />
+              )}
             </div>
             <div className="absolute -top-8 -right-8 animate-spin">
               <Sparkles className="w-12 h-12 text-yellow-400" />
