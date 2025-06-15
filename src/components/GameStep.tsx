@@ -37,8 +37,8 @@ const GameStep: React.FC<GameStepProps> = ({
   return (
     <div className="min-h-screen p-4 flex flex-col relative">
       {/* Background image with overlay */}
-      <div className="absolute inset-0 bg-[url('/images/landing-bg.jpg')] bg-cover bg-center bg-no-repeat">
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+      <div className="absolute inset-0 bg-[url('/images/typography.png')] bg-cover bg-center bg-no-repeat">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]"></div>
       </div>
 
       {/* Content */}

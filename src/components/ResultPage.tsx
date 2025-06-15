@@ -64,7 +64,13 @@ const ResultPage: React.FC<ResultPageProps> = ({ profession, selections, onResta
               {Object.entries(selections).map(([category, item]) => (
                 item && (
                   <div key={category} className="text-center">
-                    <div className="text-3xl mb-2">{item.emoji}</div>
+                    <div className="mb-2">
+                      <img 
+                        src={item.imageUrl} 
+                        alt={item.name}
+                        className="w-12 h-12 object-contain mx-auto"
+                      />
+                    </div>
                     <div className="text-sm text-purple-200 capitalize">{category}</div>
                     <div className="text-xs text-purple-300">{item.name}</div>
                   </div>
