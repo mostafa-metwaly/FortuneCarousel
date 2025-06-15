@@ -13,6 +13,7 @@ export interface Profession {
   id: string;
   name: string;
   imageUrl?: string;
+  characterUrl?: string;
   emoji?: string;
   description: string;
   facts: string[];

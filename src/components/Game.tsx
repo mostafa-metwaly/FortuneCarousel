@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import Character from './Character';
-import { GameState } from '../types/game';
+import { GameState, ClothingItem } from '../types/game';
+import GameStep from './GameStep';
+import ResultPage from './ResultPage';
 
 interface Item {
   id: string;
@@ -11,9 +13,10 @@ interface Item {
   color: string;
 }
 
+const steps: (keyof GameState['selections'])[] = ['hat', 'top', 'pants', 'shoes'];
+
 const Game: React.FC = () => {
-  const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 4;
+  const [currentStep, setCurrentStep] = useState<keyof GameState['selections']>('hat');
   const [selections, setSelections] = useState<GameState['selections']>({
     hat: null,
     top: null,
@@ -36,20 +39,31 @@ const Game: React.FC = () => {
   };
 
   const handleNext = () => {
-    if (currentStep < totalSteps) {
-      setCurrentStep(prev => prev + 1);
-      // Update category based on step
-      const categories: Array<'hat' | 'top' | 'pants' | 'shoes'> = ['hat', 'top', 'pants', 'shoes'];
-      setCurrentCategory(categories[currentStep]);
+    const currentIndex = steps.indexOf(currentStep);
+    if (currentIndex < steps.length - 1) {
+      setCurrentStep(steps[currentIndex + 1]);
     }
   };
 
   const handlePrevious = () => {
-    if (currentStep > 1) {
-      setCurrentStep(prev => prev - 1);
+    if (currentStep > steps[0]) {
+      setCurrentStep(steps[steps.indexOf(currentStep) - 1]);
       // Update category based on step
-      const categories: Array<'hat' | 'top' | 'pants' | 'shoes'> = ['hat', 'top', 'pants', 'shoes'];
-      setCurrentCategory(categories[currentStep - 2]);
+      setCurrentCategory(steps[steps.indexOf(currentStep) - 1]);
+    }
+  };
+
+  const handleClothingSelect = (category: keyof GameState['selections'], item: ClothingItem) => {
+    setSelections(prev => ({
+      ...prev,
+      [category]: item
+    }));
+  };
+
+  const handlePreviousStep = () => {
+    const currentIndex = steps.indexOf(currentStep);
+    if (currentIndex > 0) {
+      setCurrentStep(steps[currentIndex - 1]);
     }
   };
 
@@ -66,12 +80,12 @@ const Game: React.FC = () => {
         <div className="mb-8">
           <div className="h-2 bg-white/20 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-200"
-              style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+              className="h-full bg-gradient-to-r from-red-500 to-purple-600 transition-all duration-200"
+              style={{ width: `${((steps.indexOf(currentStep) + 1) / steps.length) * 100}%` }}
             ></div>
           </div>
           <div className="text-center mt-2">
-            <span className="text-white/90 text-sm">Step {currentStep} of {totalSteps}</span>
+            <span className="text-white/90 text-sm">Step {steps.indexOf(currentStep) + 1} of {steps.length}</span>
           </div>
         </div>
 
@@ -82,7 +96,7 @@ const Game: React.FC = () => {
               <Character selections={selections} />
             </div>
             <div className="absolute -top-4 -right-4 animate-spin" style={{ animationDuration: '4s' }}>
-              <Sparkles className="w-8 h-8 text-pink-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]" />
+              <Sparkles className="w-8 h-8 text-red-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]" />
             </div>
           </div>
         </div>
@@ -99,7 +113,7 @@ const Game: React.FC = () => {
                 onClick={() => handleItemSelect(item)}
                 className={`p-4 rounded-lg transition-all duration-200 transform hover:scale-102 ${
                   selections[currentCategory]?.id === item.id
-                    ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-[0_0_15px_rgba(236,72,153,0.5)]'
+                    ? 'bg-gradient-to-r from-red-500 to-purple-600 text-white shadow-[0_0_15px_rgba(236,72,153,0.5)]'
                     : 'bg-white/10 backdrop-blur-sm text-white hover:bg-white/20'
                 }`}
               >
@@ -120,11 +134,11 @@ const Game: React.FC = () => {
         <div className="flex justify-between">
           <button
             onClick={handlePrevious}
-            disabled={currentStep === 1}
+            disabled={currentStep === steps[0]}
             className={`px-6 py-2 rounded-full text-white font-medium transition-all duration-200 ${
-              currentStep === 1
+              currentStep === steps[0]
                 ? 'bg-white/20 cursor-not-allowed'
-                : 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
+                : 'bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
             }`}
           >
             Previous
@@ -135,10 +149,10 @@ const Game: React.FC = () => {
             className={`px-6 py-2 rounded-full text-white font-medium transition-all duration-200 ${
               !selections[currentCategory]
                 ? 'bg-white/20 cursor-not-allowed'
-                : 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
+                : 'bg-gradient-to-r from-red-500 to-purple-600 hover:from-red-600 hover:to-purple-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
             }`}
           >
-            {currentStep === totalSteps ? 'See Results' : 'Next'}
+            {currentStep === steps[steps.length - 1] ? 'See Results' : 'Next'}
           </button>
         </div>
       </div>

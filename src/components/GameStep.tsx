@@ -8,6 +8,7 @@ interface GameStepProps {
   clothingItems: ClothingItem[];
   selections: GameState['selections'];
   onClothingSelect: (category: keyof GameState['selections'], item: ClothingItem) => void;
+  onPreviousStep: () => void;
 }
 
 const categoryTitles = {
@@ -28,7 +29,8 @@ const GameStep: React.FC<GameStepProps> = ({
   category, 
   clothingItems, 
   selections, 
-  onClothingSelect 
+  onClothingSelect,
+  onPreviousStep
 }) => {
   const steps = ['hat', 'top', 'pants', 'shoes'];
   const currentStepIndex = steps.indexOf(category);
@@ -38,7 +40,7 @@ const GameStep: React.FC<GameStepProps> = ({
     <div className="min-h-screen p-4 flex flex-col relative">
       {/* Background image with overlay */}
       <div className="absolute inset-0 bg-[url('/images/typography.png')] bg-cover bg-center bg-no-repeat">
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]"></div>
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[5px]"></div>
       </div>
 
       {/* Content */}
@@ -46,12 +48,12 @@ const GameStep: React.FC<GameStepProps> = ({
         {/* Progress bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-4">
-            <span className="text-purple-200 text-sm">Step {currentStepIndex + 1} of 4</span>
-            <span className="text-purple-200 text-sm">{Math.round(progress)}% Complete</span>
+            <span className="text-[rgb(85,0,0)] text-sm">Step {currentStepIndex + 1} of 4</span>
+            <span className="text-[rgb(85,0,0)] text-sm">{Math.round(progress)}% Complete</span>
           </div>
-          <div className="w-full bg-purple-800 rounded-full h-2">
+          <div className="w-full bg-[rgb(85,0,0)]/20 rounded-full h-2">
             <div 
-              className="bg-gradient-to-r from-pink-400 to-purple-400 h-2 rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-[rgb(85,0,0)] to-[rgb(120,0,0)] h-2 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -67,10 +69,10 @@ const GameStep: React.FC<GameStepProps> = ({
           <div className="order-1 lg:order-2">
             <div className="text-center mb-8">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 flex items-center justify-center gap-3">
-                <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
+                <Sparkles className="w-8 h-8 text-[rgb(85,0,0)] animate-pulse" />
                 {categoryTitles[category]}
               </h2>
-              <p className="text-xl text-purple-200">{categoryDescriptions[category]}</p>
+              <p className="text-xl text-[rgb(85,0,0)]">{categoryDescriptions[category]}</p>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -78,7 +80,7 @@ const GameStep: React.FC<GameStepProps> = ({
                 <button
                   key={item.id}
                   onClick={() => onClothingSelect(category, item)}
-                  className="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:bg-white/20 hover:scale-105 transition-all duration-300 border border-white/20 hover:border-pink-400/50"
+                  className="group bg-gradient-to-r from-[rgb(85,0,0)]/10 to-[rgb(120,0,0)]/10 backdrop-blur-sm rounded-2xl p-6 text-center hover:from-[rgb(85,0,0)]/20 hover:to-[rgb(120,0,0)]/20 hover:scale-105 transition-all duration-300 border border-[rgb(85,0,0)]/30 hover:border-[rgb(85,0,0)]/50"
                 >
                   <div className="mb-3 group-hover:animate-bounce">
                     <img 
@@ -99,7 +101,10 @@ const GameStep: React.FC<GameStepProps> = ({
             {/* Back button (for future navigation) */}
             {currentStepIndex > 0 && (
               <div className="mt-8 text-center">
-                <button className="text-purple-300 hover:text-white transition-colors duration-200 flex items-center gap-2 mx-auto">
+                <button 
+                  onClick={onPreviousStep}
+                  className="text-[rgb(85,0,0)] hover:text-[rgb(120,0,0)] transition-colors duration-200 flex items-center gap-2 mx-auto"
+                >
                   <ArrowLeft className="w-4 h-4" />
                   Previous Step
                 </button>

@@ -10,7 +10,7 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
     <div className="flex flex-col items-center">
       <h3 className="text-2xl font-bold text-white mb-6">Your Style Avatar</h3>
       
-      <div className="relative w-80 h-96 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-3xl border-2 border-white/20 backdrop-blur-sm p-8 flex flex-col items-center justify-center">
+      <div className="relative w-80 h-96 bg-gradient-to-br from-[rgb(85,0,0)]/20 to-[rgb(120,0,0)]/20 rounded-3xl border-2 border-[rgb(85,0,0)]/30 backdrop-blur-sm p-8 flex flex-col items-center justify-center">
         {/* Character body structure */}
         <div className="relative flex flex-col items-center">
           
@@ -25,8 +25,8 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
                 />
               </div>
             ) : (
-              <div className="w-16 h-16 border-2 border-dashed border-purple-300 rounded-full flex items-center justify-center">
-                <span className="text-purple-300 text-xs">Hat</span>
+              <div className="w-16 h-16 border-2 border-dashed border-[rgba(85, 61, 61, 0.35)]/50 rounded-full flex items-center justify-center">
+                <span className="text-[rgb(85,0,0)] text-xs">Hat</span>
               </div>
             )}
           </div>
@@ -51,8 +51,8 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
                 />
               </div>
             ) : (
-              <div className="w-20 h-16 border-2 border-dashed border-purple-300 rounded-lg flex items-center justify-center">
-                <span className="text-purple-300 text-xs">Top</span>
+              <div className="w-20 h-16 border-2 border-dashed border-[rgb(85,0,0)]/50 rounded-lg flex items-center justify-center">
+                <span className="text-[rgb(85,0,0)] text-xs">Top</span>
               </div>
             )}
           </div>
@@ -68,8 +68,8 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
                 />
               </div>
             ) : (
-              <div className="w-16 h-20 border-2 border-dashed border-purple-300 rounded-lg flex items-center justify-center">
-                <span className="text-purple-300 text-xs">Pants</span>
+              <div className="w-16 h-20 border-2 border-dashed border-[rgb(85,0,0)]/50 rounded-lg flex items-center justify-center">
+                <span className="text-[rgb(85,0,0)] text-xs">Pants</span>
               </div>
             )}
           </div>
@@ -85,8 +85,8 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
                 />
               </div>
             ) : (
-              <div className="w-12 h-8 border-2 border-dashed border-purple-300 rounded-lg flex items-center justify-center">
-                <span className="text-purple-300 text-xs">Shoes</span>
+              <div className="w-12 h-8 border-2 border-dashed border-[rgb(85,0,0)]/50 rounded-lg flex items-center justify-center">
+                <span className="text-[rgb(85,0,0)] text-xs">Shoes</span>
               </div>
             )}
           </div>
@@ -123,7 +123,7 @@ const Character: React.FC<CharacterProps> = ({ selections }) => {
 
       {/* Selection summary */}
       <div className="mt-6 text-center">
-        <div className="text-purple-200 text-sm">
+        <div className="text-red-200 text-sm">
           Selected: {Object.values(selections).filter(Boolean).length} of 4 items
         </div>
       </div>
