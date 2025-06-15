@@ -41,15 +41,18 @@ const Game: React.FC = () => {
   const handleNext = () => {
     const currentIndex = steps.indexOf(currentStep);
     if (currentIndex < steps.length - 1) {
-      setCurrentStep(steps[currentIndex + 1]);
+      const nextStep = steps[currentIndex + 1];
+      setCurrentStep(nextStep);
+      setCurrentCategory(nextStep);
     }
   };
 
   const handlePrevious = () => {
-    if (currentStep > steps[0]) {
-      setCurrentStep(steps[steps.indexOf(currentStep) - 1]);
-      // Update category based on step
-      setCurrentCategory(steps[steps.indexOf(currentStep) - 1]);
+    const currentIndex = steps.indexOf(currentStep);
+    if (currentIndex > 0) {
+      const previousStep = steps[currentIndex - 1];
+      setCurrentStep(previousStep);
+      setCurrentCategory(previousStep);
     }
   };
 
@@ -58,13 +61,6 @@ const Game: React.FC = () => {
       ...prev,
       [category]: item
     }));
-  };
-
-  const handlePreviousStep = () => {
-    const currentIndex = steps.indexOf(currentStep);
-    if (currentIndex > 0) {
-      setCurrentStep(steps[currentIndex - 1]);
-    }
   };
 
   return (

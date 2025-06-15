@@ -75,7 +75,7 @@ const GameStep: React.FC<GameStepProps> = ({
               <p className="text-xl text-[rgb(85,0,0)]">{categoryDescriptions[category]}</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
               {clothingItems.map((item) => (
                 <button
                   key={item.id}
@@ -86,14 +86,10 @@ const GameStep: React.FC<GameStepProps> = ({
                     <img 
                       src={item.imageUrl} 
                       alt={item.name}
-                      className="w-24 h-24 object-contain mx-auto"
+                      className="w-32 h-32 object-contain mx-auto"
                     />
                   </div>
-                  {/* <h3 className="text-white font-semibold">{item.name}</h3> */}
-                  <div 
-                    className="w-3 h-3 rounded-full mx-auto mt-3"
-                    style={{ backgroundColor: item.color }}
-                  />
+
                 </button>
               ))}
             </div>
