@@ -1,40 +1,55 @@
 import React, { useState } from 'react';
 import { Sparkles } from 'lucide-react';
 import Character from './Character';
+import { GameState } from '../types/game';
 
 interface Item {
   id: string;
   name: string;
   emoji: string;
-}
-
-interface SelectedItems {
-  [key: string]: string;
+  imageUrl: string;
+  color: string;
 }
 
 const Game: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
-  const [selectedItems, setSelectedItems] = useState<SelectedItems>({});
-  const [currentCategory, setCurrentCategory] = useState('Top');
+  const [selections, setSelections] = useState<GameState['selections']>({
+    hat: null,
+    top: null,
+    pants: null,
+    shoes: null
+  });
+  const [currentCategory, setCurrentCategory] = useState<'hat' | 'top' | 'pants' | 'shoes'>('hat');
   const [currentItems, setCurrentItems] = useState<Item[]>([]);
 
   const handleItemSelect = (item: Item) => {
-    setSelectedItems(prev => ({
+    setSelections(prev => ({
       ...prev,
-      [currentCategory]: item.id
+      [currentCategory]: {
+        id: item.id,
+        name: item.name,
+        imageUrl: item.imageUrl,
+        color: item.color
+      }
     }));
   };
 
   const handleNext = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1);
+      // Update category based on step
+      const categories: Array<'hat' | 'top' | 'pants' | 'shoes'> = ['hat', 'top', 'pants', 'shoes'];
+      setCurrentCategory(categories[currentStep]);
     }
   };
 
   const handlePrevious = () => {
     if (currentStep > 1) {
       setCurrentStep(prev => prev - 1);
+      // Update category based on step
+      const categories: Array<'hat' | 'top' | 'pants' | 'shoes'> = ['hat', 'top', 'pants', 'shoes'];
+      setCurrentCategory(categories[currentStep - 2]);
     }
   };
 
@@ -51,7 +66,7 @@ const Game: React.FC = () => {
         <div className="mb-8">
           <div className="h-2 bg-white/20 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-red-600 to-red-800 transition-all duration-300"
+              className="h-full bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300"
               style={{ width: `${(currentStep / totalSteps) * 100}%` }}
             ></div>
           </div>
@@ -64,10 +79,10 @@ const Game: React.FC = () => {
         <div className="mb-8 flex justify-center">
           <div className="relative">
             <div className="w-48 h-48 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-              <Character selectedItems={selectedItems} />
+              <Character selections={selections} />
             </div>
             <div className="absolute -top-4 -right-4 animate-spin" style={{ animationDuration: '3s' }}>
-              <Sparkles className="w-8 h-8 text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.5)]" />
+              <Sparkles className="w-8 h-8 text-pink-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]" />
             </div>
           </div>
         </div>
@@ -75,7 +90,7 @@ const Game: React.FC = () => {
         {/* Category selection */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-white mb-4 text-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-            Choose Your {currentCategory}
+            Choose Your {currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             {currentItems.map((item) => (
@@ -83,12 +98,18 @@ const Game: React.FC = () => {
                 key={item.id}
                 onClick={() => handleItemSelect(item)}
                 className={`p-4 rounded-lg transition-all duration-200 transform hover:scale-105 ${
-                  selectedItems[currentCategory] === item.id
-                    ? 'bg-gradient-to-r from-red-600 to-red-800 text-white shadow-[0_0_15px_rgba(220,38,38,0.5)]'
+                  selections[currentCategory]?.id === item.id
+                    ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-[0_0_15px_rgba(236,72,153,0.5)]'
                     : 'bg-white/10 backdrop-blur-sm text-white hover:bg-white/20'
                 }`}
               >
-                <div className="text-4xl mb-2">{item.emoji}</div>
+                <div className="text-4xl mb-2">
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.name}
+                    className="w-12 h-12 object-contain mx-auto"
+                  />
+                </div>
                 <div className="text-sm font-medium">{item.name}</div>
               </button>
             ))}
@@ -103,18 +124,18 @@ const Game: React.FC = () => {
             className={`px-6 py-2 rounded-full text-white font-medium transition-all duration-200 ${
               currentStep === 1
                 ? 'bg-white/20 cursor-not-allowed'
-                : 'bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 hover:shadow-[0_0_15px_rgba(220,38,38,0.5)]'
+                : 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
             }`}
           >
             Previous
           </button>
           <button
             onClick={handleNext}
-            disabled={!selectedItems[currentCategory]}
+            disabled={!selections[currentCategory]}
             className={`px-6 py-2 rounded-full text-white font-medium transition-all duration-200 ${
-              !selectedItems[currentCategory]
+              !selections[currentCategory]
                 ? 'bg-white/20 cursor-not-allowed'
-                : 'bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 hover:shadow-[0_0_15px_rgba(220,38,38,0.5)]'
+                : 'bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]'
             }`}
           >
             {currentStep === totalSteps ? 'See Results' : 'Next'}

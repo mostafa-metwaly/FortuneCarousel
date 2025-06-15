@@ -25,24 +25,24 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
             />
           </div>
           <div className="absolute -top-4 -right-4 animate-spin" style={{ animationDuration: '3s' }}>
-            <Sparkles className="w-12 h-12 text-red-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.5)]" />
+            <Sparkles className="w-12 h-12 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]" />
           </div>
           <div className="absolute -bottom-4 -left-4 animate-spin" style={{ animationDuration: '3s', animationDelay: '0.5s' }}>
-            <Sparkles className="w-8 h-8 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
+            <Sparkles className="w-8 h-8 text-pink-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]" />
           </div>
         </div>
 
         {/* Title */}
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]" style={{ animationDuration: '0.5s' }}>
           <span className="text-white">Style</span>
-          <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+          <span className="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
             Fortune
           </span>
         </h1>
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white mb-8 animate-fade-in drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] font-semibold" style={{ animationDuration: '0.5s', animationDelay: '0.2s' }}>
-          Discover Your Dream Profession Based on Your Style!
+          Your job based on your choices!
         </p>
 
         <p className="text-lg text-white/90 mb-12 animate-fade-in drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] leading-relaxed" style={{ animationDuration: '0.5s', animationDelay: '0.4s' }}>
@@ -53,7 +53,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
         {/* Start button */}
         <button
           onClick={onStartGame}
-          className="group bg-gradient-to-r from-red-600 to-red-800 hover:from-red-700 hover:to-red-900 text-white px-12 py-4 rounded-full text-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(220,38,38,0.5)] animate-fade-in flex items-center gap-3 mx-auto drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]"
+          className="group bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white px-12 py-4 rounded-full text-xl font-semibold transition-all duration-200 transform hover:scale-105 hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] animate-fade-in flex items-center gap-3 mx-auto drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]"
           style={{ animationDuration: '0.5s', animationDelay: '0.6s' }}
         >
           <Play className="w-6 h-6 group-hover:animate-pulse" style={{ animationDuration: '0.8s' }} />
@@ -63,15 +63,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStartGame }) => {
         {/* Fun stats */}
         <div className="mt-12 grid grid-cols-3 gap-8 text-center animate-fade-in" style={{ animationDuration: '0.5s', animationDelay: '0.8s' }}>
           <div className="text-white/95 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-            <div className="text-3xl font-bold text-red-400 drop-shadow-[0_2px_4px_rgba(248,113,113,0.3)]">24</div>
+            <div className="text-3xl font-bold text-pink-400 drop-shadow-[0_2px_4px_rgba(236,72,153,0.3)]">24</div>
             <div className="text-sm font-medium">Clothing Options</div>
           </div>
           <div className="text-white/95 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-            <div className="text-3xl font-bold text-red-500 drop-shadow-[0_2px_4px_rgba(239,68,68,0.3)]">9</div>
+            <div className="text-3xl font-bold text-purple-400 drop-shadow-[0_2px_4px_rgba(168,85,247,0.3)]">9</div>
             <div className="text-sm font-medium">Career Predictions</div>
           </div>
           <div className="text-white/95 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-            <div className="text-3xl font-bold text-red-600 drop-shadow-[0_2px_4px_rgba(220,38,38,0.3)]">2</div>
+            <div className="text-3xl font-bold text-indigo-400 drop-shadow-[0_2px_4px_rgba(129,140,248,0.3)]">2</div>
             <div className="text-sm font-medium">Minutes to Play</div>
           </div>
         </div>
