@@ -5,6 +5,7 @@ export const professions: Profession[] = [
     id: 'doctor',
     name: 'Doctor',
     emoji: '👩‍⚕️',
+    imageUrl: '/images/professions/doctor.png',
     description: 'Your style shows dedication to precision, care, and professionalism. You value comfort and functionality while maintaining a clean, trustworthy appearance.',
     illustration: '🏥',
     facts: [
@@ -18,6 +19,7 @@ export const professions: Profession[] = [
     id: 'artist',
     name: 'Artist',
     emoji: '👩‍🎨',
+    imageUrl: '/images/professions/artist.png',
     description: 'Your creative spirit shines through your unique style choices. You value self-expression, originality, and aren\'t afraid to stand out from the crowd.',
     illustration: '🎨',
     facts: [
@@ -31,6 +33,7 @@ export const professions: Profession[] = [
     id: 'barista',
     name: 'Barista',
     emoji: '☕',
+    imageUrl: '/images/professions/barista.png',
     description: 'Your approachable style and practical choices show you love creating experiences for others. You balance creativity with efficiency in everything you do.',
     illustration: '☕',
     facts: [
@@ -44,6 +47,7 @@ export const professions: Profession[] = [
     id: 'police',
     name: 'Police Officer',
     emoji: '👮',
+    imageUrl: '/images/professions/police.png',
     description: 'Your authoritative yet approachable style shows you value justice, community service, and making a positive impact on society.',
     illustration: '🚔',
     facts: [
@@ -57,6 +61,7 @@ export const professions: Profession[] = [
     id: 'teacher',
     name: 'Teacher',
     emoji: '👩‍🏫',
+    imageUrl: '/images/professions/teacher.png',
     description: 'Your balanced, professional style shows you care about making knowledge accessible. You inspire others while maintaining approachability and authority.',
     illustration: '📚',
     facts: [
@@ -70,6 +75,7 @@ export const professions: Profession[] = [
     id: 'photographer',
     name: 'Photographer',
     emoji: '📸',
+    imageUrl: '/images/professions/photographer.png',
     description: 'Your practical yet stylish choices show you see beauty everywhere. You balance functionality with aesthetics, always ready to capture the perfect moment.',
     illustration: '📷',
     facts: [
@@ -83,6 +89,7 @@ export const professions: Profession[] = [
     id: 'athlete',
     name: 'Professional Athlete',
     emoji: '🏃‍♀️',
+    imageUrl: '/images/professions/athlete.png',
     description: 'Your performance-focused style shows dedication to excellence. You prioritize function, comfort, and peak performance in everything you wear.',
     illustration: '🏆',
     facts: [
@@ -96,6 +103,7 @@ export const professions: Profession[] = [
     id: 'pilot',
     name: 'Commercial Pilot',
     emoji: '👨‍✈️',
+    imageUrl: '/images/professions/pilot.png',
     description: 'Your sharp, professional appearance reflects precision and responsibility. You value structure, attention to detail, and maintaining high standards.',
     illustration: '✈️',
     facts: [
@@ -109,6 +117,7 @@ export const professions: Profession[] = [
     id: 'judge',
     name: 'Judge',
     emoji: '👩‍⚖️',
+    imageUrl: '/images/professions/judge.png',
     description: 'Your refined, authoritative style shows wisdom and fairness. You command respect while remaining approachable and maintaining the highest professional standards.',
     illustration: '⚖️',
     facts: [
